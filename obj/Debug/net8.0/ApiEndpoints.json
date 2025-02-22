@@ -1,0 +1,186 @@
+[
+  {
+    "ContainingType": "JobFind_BE.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/v1/account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDto",
+        "Type": "JobFind_BE.DTOs.Account.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.AreaController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/area",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.AreaController",
+    "Method": "Create",
+    "RelativePath": "api/v1/area",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "areaRequest",
+        "Type": "JobFind_BE.DTOs.Area.AreaRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.AreaController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/area/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.AreaController",
+    "Method": "Update",
+    "RelativePath": "api/v1/area/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "areaRequest",
+        "Type": "JobFind_BE.DTOs.Area.AreaRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.AreaController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/area/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.CategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.CategoryController",
+    "Method": "Create",
+    "RelativePath": "api/v1/category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryRequest",
+        "Type": "JobFind_BE.DTOs.Category.CategoryRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.CategoryController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/category/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.CategoryController",
+    "Method": "Update",
+    "RelativePath": "api/v1/category/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoryRequest",
+        "Type": "JobFind_BE.DTOs.Category.CategoryRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.CategoryController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/category/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobFind_BE.Controllers.PostController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/post",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

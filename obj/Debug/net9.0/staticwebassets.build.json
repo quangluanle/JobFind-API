@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "RKetCgN4/7NkV4RLpEEPzp4RGqIgdMDqT5gd7P8ZsO4=",
+  "Source": "JobFind-BE",
+  "BasePath": "_content/JobFind-BE",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
