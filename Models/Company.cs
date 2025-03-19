@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace JobFind_BE.Models
 {
@@ -25,6 +26,7 @@ namespace JobFind_BE.Models
 
 		public DateTime Created_at { get; set; } = DateTime.Now;
 		public DateTime Updated_at { get; set; } = DateTime.Now;
+
 		public ICollection<Post> Post { get; set; } = new List<Post>();
 		public ICollection<User_Company> User_Companies { get; set; } = new List<User_Company>();
 	}

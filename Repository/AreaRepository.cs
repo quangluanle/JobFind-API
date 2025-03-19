@@ -16,26 +16,26 @@ namespace JobFind_BE.Repository
 
 		public async Task<Area?> createArea(Area area)
 		{
-			await _context.Areas.AddAsync(area);
+			await _context.Area.AddAsync(area);
 			await _context.SaveChangesAsync();
 			return area;
 		}
 
 		public async Task<Area?> deleteArea(int id)
 		{
-			var area = await _context.Areas.FindAsync(id);
+			var area = await _context.Area.FindAsync(id);
 			if (area == null)
 			{
 				return null;
 			}
-			_context.Areas.Remove(area);
+			_context.Area.Remove(area);
 			await _context.SaveChangesAsync();
 			return area;
 		}
 
 		public async Task<Area?> getAreaById(int id)
 		{
-			var area = await _context.Areas.FindAsync(id);
+			var area = await _context.Area.FindAsync(id);
 			if (area == null) {
 				return null;
 			}
@@ -44,7 +44,7 @@ namespace JobFind_BE.Repository
 
 		public async Task<bool?> existsAreas(string name)
 		{
-			var area = await _context.Areas.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
+			var area = await _context.Area.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
 			if (area == null)
 			{
 				return false;
@@ -55,12 +55,12 @@ namespace JobFind_BE.Repository
 
 		public async Task<List<Area>> getAllAreas()
 		{
-			return  await _context.Areas.ToListAsync();
+			return  await _context.Area.ToListAsync();
 		}
 
 		public async Task<Area?> updateArea(int id, AreaRequestDto area)
 		{
-			var areaModel = await _context.Areas.FindAsync(id);
+			var areaModel = await _context.Area.FindAsync(id);
 			if (areaModel == null)
 			{
 				return null;

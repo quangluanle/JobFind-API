@@ -15,7 +15,7 @@ namespace JobFind_BE.Repository
 		}
 		public async Task<FormOfWork?> createFormOfWork(FormOfWork formOfWork)
 		{
-			var result = await _context.FormOfWorks.AddAsync(formOfWork);
+			var result = await _context.FormOfWork.AddAsync(formOfWork);
 			await _context.SaveChangesAsync();
 			return formOfWork;
 		}
@@ -27,7 +27,7 @@ namespace JobFind_BE.Repository
 
 		public async Task<bool?> existsFormOfWork(string name)
 		{
-			var form_of_work = await _context.FormOfWorks.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
+			var form_of_work = await _context.FormOfWork.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
 			if (form_of_work == null)
 			{
 				return false;
@@ -37,7 +37,7 @@ namespace JobFind_BE.Repository
 
 		public async Task<List<FormOfWork>> getAllFormOfWorks()
 		{
-			return await _context.FormOfWorks.ToListAsync();
+			return await _context.FormOfWork.ToListAsync();
 		}
 
 		public Task<FormOfWork?> getFormOfWorkById(int id)

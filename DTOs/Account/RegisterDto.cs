@@ -4,9 +4,9 @@ namespace JobFind_BE.DTOs.Account
 {
 	public class RegisterDto
 	{
-		[Required]
-		[MinLength(3,ErrorMessage = "Tên người dùng không hợp lệ !!!")]
-		public string? Username { get; set; }
+		//[Required]
+		//[MinLength(3,ErrorMessage = "Tên người dùng không hợp lệ !!!")]
+		//public string? Username { get; set; }
 		[Required]
 		[EmailAddress (ErrorMessage ="Emaill không hợp lệ !!!")]
 		public string? Email { get; set; } 

@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobFind_BE.Models
 {
-	[Table("Areas")]
 	public class Area
 	{
 		[Key]
@@ -12,6 +11,7 @@ namespace JobFind_BE.Models
 		public string Name { get; set; } = string.Empty;
 		public DateTime Created_at { get; set; } = DateTime.Now;
 		public DateTime Updated_at { get; set; } = DateTime.Now;
+
 		public ICollection<Post> Posts { get; set; } = new List<Post>();
 	}
 }

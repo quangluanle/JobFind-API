@@ -14,11 +14,10 @@ namespace JobFind_BE.Controllers
 		}
 		[HttpGet]
 		[Route("api/v1/post")]
-		public async Task<IActionResult> GetAll([FromQuery] PostQueryObject postQuery)
+		public async Task<IActionResult> GetAll([FromQuery] int pageSize = 5, [FromQuery] int page = 1, [FromQuery] string? search = null)
 		{
-			var posts = await _postRepository.GetAllPosts(postQuery);
-			var postDtos = posts.Select(a => a.toPostDto());
-			return Ok(posts);
+			var result = await _postRepository.GetAllPosts(pageSize, page, search);
+			return Ok(result);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using JobFind_BE.DTOs.Area;
 using JobFind_BE.Interfaces;
 using JobFind_BE.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobFind_BE.Controllers
@@ -36,6 +37,7 @@ namespace JobFind_BE.Controllers
 			return Ok(area.toAreaDto());
 		}
 		[HttpPost]
+		[Authorize]
 		public async Task<IActionResult> Create([FromBody] AreaRequestDto areaRequest)
 		{
 			if (!ModelState.IsValid)
@@ -53,6 +55,7 @@ namespace JobFind_BE.Controllers
 		}
 		[HttpPut]
 		[Route("{id:int}")]
+		[Authorize]
 		public async Task<IActionResult> Update([FromRoute] int id,[FromBody] AreaRequestDto areaRequest)
 		{
 			if (!ModelState.IsValid)
@@ -73,6 +76,7 @@ namespace JobFind_BE.Controllers
 		}
 		[HttpDelete]
 		[Route("{id:int}")]
+		[Authorize]
 		public async Task<IActionResult> Delete([FromRoute] int id)
 		{
 			if (!ModelState.IsValid)

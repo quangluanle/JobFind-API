@@ -4,6 +4,7 @@ using JobFind_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobFind_BE.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250224080627_FullName-AppUser")]
+    partial class FullNameAppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace JobFind_BE.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -84,10 +87,6 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -95,10 +94,6 @@ namespace JobFind_BE.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("PhoneNumber")
-                        .IsUnique()
-                        .HasFilter("[PhoneNumber] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -123,7 +118,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Area");
+                    b.ToTable("Areas");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Category", b =>
@@ -146,7 +141,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Company", b =>
@@ -196,7 +191,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Company");
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.FormOfWork", b =>
@@ -223,7 +218,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FormOfWork");
+                    b.ToTable("FormOfWorks");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Level", b =>
@@ -246,7 +241,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Level");
+                    b.ToTable("Levels");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Position", b =>
@@ -273,7 +268,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Position");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Post", b =>
@@ -290,11 +285,20 @@ namespace JobFind_BE.Migrations
                     b.Property<int>("Area_id")
                         .HasColumnType("int");
 
+                    b.Property<int>("AreasId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Benefit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Category_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompaniesId")
                         .HasColumnType("int");
 
                     b.Property<int>("Company_id")
@@ -309,6 +313,9 @@ namespace JobFind_BE.Migrations
 
                     b.Property<DateTime>("Due_at")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("FormOfWorksId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Form_of_work_id")
                         .HasColumnType("int");
@@ -329,15 +336,15 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Area_id");
+                    b.HasIndex("AreasId");
 
-                    b.HasIndex("Category_id");
+                    b.HasIndex("CategoriesId");
 
-                    b.HasIndex("Company_id");
+                    b.HasIndex("CompaniesId");
 
-                    b.HasIndex("Form_of_work_id");
+                    b.HasIndex("FormOfWorksId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Post_Level", b =>
@@ -493,7 +500,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.User_Company", b =>
@@ -557,13 +564,13 @@ namespace JobFind_BE.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee7ee1c8-853d-418a-84a1-01aaa2e36f4d",
+                            Id = "b44836ed-422f-4e47-a2b3-277aa87f011d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "def741cc-92ef-4681-9bc1-9a85876b8127",
+                            Id = "0158b754-cbf7-473b-b3dc-19aae3130543",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -677,37 +684,37 @@ namespace JobFind_BE.Migrations
 
             modelBuilder.Entity("JobFind_BE.Models.Post", b =>
                 {
-                    b.HasOne("JobFind_BE.Models.Area", "Area")
+                    b.HasOne("JobFind_BE.Models.Area", "Areas")
                         .WithMany("Posts")
-                        .HasForeignKey("Area_id")
+                        .HasForeignKey("AreasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobFind_BE.Models.Category", "Category")
+                    b.HasOne("JobFind_BE.Models.Category", "Categories")
                         .WithMany("Posts")
-                        .HasForeignKey("Category_id")
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobFind_BE.Models.Company", "Company")
+                    b.HasOne("JobFind_BE.Models.Company", "Companies")
                         .WithMany("Post")
-                        .HasForeignKey("Company_id")
+                        .HasForeignKey("CompaniesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobFind_BE.Models.FormOfWork", "FormOfWork")
+                    b.HasOne("JobFind_BE.Models.FormOfWork", "FormOfWorks")
                         .WithMany("Posts")
-                        .HasForeignKey("Form_of_work_id")
+                        .HasForeignKey("FormOfWorksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Area");
+                    b.Navigation("Areas");
 
-                    b.Navigation("Category");
+                    b.Navigation("Categories");
 
-                    b.Navigation("Company");
+                    b.Navigation("Companies");
 
-                    b.Navigation("FormOfWork");
+                    b.Navigation("FormOfWorks");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Post_Level", b =>

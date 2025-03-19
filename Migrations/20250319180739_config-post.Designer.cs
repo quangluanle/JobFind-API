@@ -4,6 +4,7 @@ using JobFind_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobFind_BE.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250319180739_config-post")]
+    partial class configpost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,7 +126,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Area");
+                    b.ToTable("Areas");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Category", b =>
@@ -146,7 +149,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Company", b =>
@@ -196,7 +199,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Company");
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.FormOfWork", b =>
@@ -223,7 +226,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FormOfWork");
+                    b.ToTable("FormOfWorks");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Level", b =>
@@ -246,7 +249,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Level");
+                    b.ToTable("Levels");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Position", b =>
@@ -273,7 +276,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Position");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Post", b =>
@@ -337,7 +340,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasIndex("Form_of_work_id");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Post_Level", b =>
@@ -493,7 +496,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.User_Company", b =>
@@ -557,13 +560,13 @@ namespace JobFind_BE.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee7ee1c8-853d-418a-84a1-01aaa2e36f4d",
+                            Id = "3cf0965b-d889-43a9-bd4b-a536f30e6e43",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "def741cc-92ef-4681-9bc1-9a85876b8127",
+                            Id = "404ed05b-ac75-4aec-833c-2de645b5ce9a",
                             Name = "User",
                             NormalizedName = "USER"
                         });

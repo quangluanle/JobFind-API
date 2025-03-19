@@ -4,6 +4,7 @@ using JobFind_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobFind_BE.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250319181617_config-db")]
+    partial class configdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,7 +126,7 @@ namespace JobFind_BE.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Area");
+                    b.ToTable("Areas");
                 });
 
             modelBuilder.Entity("JobFind_BE.Models.Category", b =>
@@ -557,13 +560,13 @@ namespace JobFind_BE.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee7ee1c8-853d-418a-84a1-01aaa2e36f4d",
+                            Id = "63c73c10-f7cd-4ad6-8617-f28aa61bdcc2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "def741cc-92ef-4681-9bc1-9a85876b8127",
+                            Id = "0ab4e3ae-f9dd-4779-9b92-62621bd0c3e6",
                             Name = "User",
                             NormalizedName = "USER"
                         });

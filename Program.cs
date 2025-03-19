@@ -1,11 +1,13 @@
-using JobFind_BE.Data;
+﻿using JobFind_BE.Data;
 using JobFind_BE.Interfaces;
 using JobFind_BE.Models;
 using JobFind_BE.Repository;
+using JobFind_BE.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+;
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
@@ -50,9 +53,6 @@ builder.Services.AddAuthentication(options =>
 		IssuerSigningKey = new SymmetricSecurityKey(
 			System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
 		),
-		ValidateLifetime = true,
-		RequireExpirationTime = true,
-		ClockSkew = TimeSpan.Zero
 	};
 });
 
@@ -60,6 +60,7 @@ builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICategoryReposity, CategoryReposity>();
 builder.Services.AddScoped<IFormOfWorkRopository, FormOfWorkRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 

@@ -15,26 +15,26 @@ namespace JobFind_BE.Repository
 		}
 		public async Task<Category?> createCategory(Category category)
 		{
-			await _context.Categories.AddAsync(category);
+			await _context.Category.AddAsync(category);
 			await _context.SaveChangesAsync();
 			return category;
 		}
 
 		public async Task<Category?> deleteCategory(int id)
 		{
-			var category = await _context.Categories.FindAsync(id);
+			var category = await _context.Category.FindAsync(id);
 			if (category == null)
 			{
 				return null;
 			}
-			_context.Categories.Remove(category);
+			_context.Category.Remove(category);
 			await _context.SaveChangesAsync();
 			return category;
 		}
 
 		public async Task<bool?> existsCategory(string name)
 		{
-			var category = await _context.Categories.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
+			var category = await _context.Category.Where(a => EF.Functions.Like(a.Name, $"%{name}%")).FirstOrDefaultAsync();
 			if (category == null)
 			{
 				return false;
@@ -44,12 +44,12 @@ namespace JobFind_BE.Repository
 
 		public async Task<List<Category>> getAllCategories()
 		{
-			return await _context.Categories.ToListAsync();
+			return await _context.Category.ToListAsync();
 		}
 
 		public async Task<Category?> getCategoryById(int id)
 		{
-			var category = await _context.Categories.FindAsync(id);
+			var category = await _context.Category.FindAsync(id);
 			if (category == null)
 			{
 				return null;
@@ -59,7 +59,7 @@ namespace JobFind_BE.Repository
 
 		public async Task<Category?> updateCategory(int id, CategoryRequestDto category)
 		{
-			var exitsCategory = await _context.Categories.FindAsync(id);
+			var exitsCategory = await _context.Category.FindAsync(id);
 			if (exitsCategory == null)
 			{
 				return null;

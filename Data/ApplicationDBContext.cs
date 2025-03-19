@@ -10,14 +10,14 @@ namespace JobFind_BE.Data
 		{
 
 		}
-		public DbSet<Models.Post> Posts { get; set; }
-		public DbSet<Models.Company> Companies { get; set; }
-		public DbSet<Models.Area> Areas { get; set; }
-		public DbSet<Models.FormOfWork> FormOfWorks { get; set; }
-		public DbSet<Models.Category> Categories { get; set; }
-		public DbSet<Models.Level> Levels { get; set; }
-		public DbSet<Models.Position> Positions { get; set; }
-		public DbSet<Models.Tag> Tags { get; set; }
+		public DbSet<Models.Post> Post { get; set; }
+		public DbSet<Models.Company> Company { get; set; }
+		public DbSet<Models.Area> Area { get; set; }
+		public DbSet<Models.FormOfWork> FormOfWork { get; set; }
+		public DbSet<Models.Category> Category { get; set; }
+		public DbSet<Models.Level> Level { get; set; }
+		public DbSet<Models.Position> Position { get; set; }
+		public DbSet<Models.Tag> Tag { get; set; }
 		public DbSet<Models.Post_Tag> Post_Tag { get; set; }
 		public DbSet<Models.Post_User> Post_User { get; set; }
 		public DbSet<Models.Post_Level> Post_Level { get; set; }
@@ -29,7 +29,8 @@ namespace JobFind_BE.Data
 
 			base.OnModelCreating(builder);
 
-
+			builder.Entity<AppUser>().HasIndex(u => u.Email).IsUnique();
+			builder.Entity<AppUser>().HasIndex(u => u.PhoneNumber).IsUnique();
 			List<IdentityRole> roles = new List<IdentityRole>
 			{
 				new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
